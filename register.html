@@ -1,0 +1,189 @@
+<html>
+    <head>
+        <Title>This is my first web page</Title>
+        <script>
+              var error=0;
+              function checkName()
+              {
+                   error=0;
+                   var vusername=document.getElementById("username").value;
+                   if(vusername=="")
+                   {
+                       error=1;
+                       document.getElementById("nameresult").innerHTML="<B><Font color=red>Name cannot be empty!</Font></B>";
+                         
+                   }
+                   else
+                   {
+                     //The content should contain only alhabets and white space
+                     var len=vusername.length;
+                     //alert(len);
+                     for(var i=0;i<len;i++)
+                     {
+                           var ch=vusername.charAt(i);   //Raj
+                           //alert(ch);
+                           if((ch>='a' && ch<='z') || (ch>='A' && ch<='Z') ||(ch==' '))
+                           { 
+                              //alert(ch + "allowed");
+                           
+                           }
+                           else
+                           {
+                             // alert(ch + "not allowed");
+                             error=1;
+                           }
+                     }
+                     if(error==1)
+                     {
+                        document.getElementById("nameresult").innerHTML="<B><Font color=red>Name can contain only alphabets and spaces!</Font></B>";
+                        
+                     }
+                     else
+                     {
+                        document.getElementById("nameresult").innerHTML="";
+                     }
+
+                     //document.getElementById("nameresult").innerHTML="";
+                   }
+                   return(error);
+              }
+
+              function checkMobile()
+              {
+               error=0;
+               var vmobile=document.getElementById("mobile").value;
+                   if(vmobile=="")
+                   {
+                       error=1;
+                       document.getElementById("mobileresult").innerHTML="<B><Font color=red>Mobile cannot be empty!</Font></B>";
+                       //return false;
+                   }
+                   else
+                   {
+                     //The content should contain only digits
+                     var len=vmobile.length;
+                     if(len!=10)
+                     {
+                        error=1;
+                        document.getElementById("mobileresult").innerHTML="<B><Font color=red>Mobile should be 10 digits!</Font></B>";
+                        //return false;
+                     }
+               
+                     for(var i=0;i<len;i++)
+                     {
+                           var ch=vmobile.charAt(i);   //9939802016
+                           if(ch>='0' && ch<='9')
+                           { 
+                              //alert(ch + "allowed");
+
+                           }
+                           else
+                           {
+                             // alert(ch + "not allowed");
+                             error=1;
+                           }
+                     }
+                     if(error==1)
+                     {
+                        document.getElementById("mobileresult").innerHTML="<B><Font color=red>Mobile can contain only digits!</Font></B>";
+                        //return false;
+                     }
+                     else
+                     {
+                        document.getElementById("mobileresult").innerHTML="";
+                     }
+
+                     
+                   }
+                   return(error);
+              }
+
+              function checkEmail()
+              {
+               error=0;
+               var vemail=document.getElementById("email").value;
+              
+               var pos1=vemail.indexOf("@"); //alert(pos1);
+               var pos2=vemail.indexOf("."); //alert(pos2);
+               if(pos1==0){
+                  document.getElementById("emailresult").innerHTML="<B><Font color=red>Invalid Email!</Font></B>";
+                        
+                  error=1;//@ cannot be at the start
+               }
+               if(pos2<0){
+                  document.getElementById("emailresult").innerHTML="<B><Font color=red>Invalid Email!</Font></B>";
+                  
+                  error=1;//. is not found  in the email
+               }
+               return(error);
+              }
+
+              function CheckInputvalue()
+              {
+                var error1,error2, error3;
+                   error1=checkName();
+                   error2=checkMobile();
+                   error3=checkEmail();
+                   
+                   if(error1==1 || error2==1 || error3==1)
+                   {
+                     return false;
+                   }
+                   
+              }
+         
+        </script>
+    </head>
+    <body>
+         <B>Contact us:</B> +91-9900223300 |     
+         contact@internship.com
+         <A href="https://www.facebook.com/SoftwareServicesAndSolutions">
+            <img src="images/fb.png" height="25px" align="right">
+         </A>   
+         <img src="images/ig.png" height="25px"  align="right">
+         <img src="images/ytube.png"  height="25px"  align="right">
+         <HR>
+         <H1 align="center">Register Now</H1>
+         <Form action=response.html method=post onsubmit="return CheckInputvalue()">
+            <table bgcolor=yellow width=50% align=center>
+               <TR>
+               <TD>Name </TD>
+               <TD>
+                  <input type=text id="username" name=username>
+                  <span id="nameresult"></span>
+               </TD>
+               </TR>
+               <TR>
+               <TD>Mobile </TD>
+               <TD>
+                  <input type=text name=mobile id="mobile">
+                  <span id="mobileresult"></span>
+               </TD>
+               </TR>
+               <TR>
+               <TD>Email </TD>
+               <TD>
+                  <input type=text name=email id="email">
+                  <span id="emailresult"></span>
+               </TD>
+               </TR>
+               <TR>
+               <TD>Duration</TD> <TD><select name=services>
+                          <option value=service1>1 month</option>
+                          <option value=service2>6 months</option>
+                          <option value=service3>1 year</option>
+                       </select></TD>
+               </TR> 
+                <TR>
+               <TD>Query</TD><TD><textarea rows=4 cols=30></textarea></TD>
+               </TR>
+               <TR>
+               <TD><input type=submit></TD><TD><input type=reset></TD>
+               </TR>
+             </table>
+           </Form>
+           
+         <hr>
+        
+    </body>
+</html>
